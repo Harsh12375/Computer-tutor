@@ -1,0 +1,77 @@
+@import '../../styles/variables';
+
+.calendar-container {
+	&--static { 
+		width: 230px;
+	}
+	&--by-content {
+		width: 100%;
+	 }
+}
+
+.calendar-month--mini {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 5px 10px 5px;
+}
+
+.calendar__week-grid--mini {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	width: 100%;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 500;
+	& > * {
+		display: flex;
+  	justify-content: center;
+  	align-items: center;  
+    height: 26px;
+		margin: 2px;
+		& > span {
+			font-size: 11px;
+		}
+	}
+	[class$=day-type] {
+    vertical-align: middle;
+    color: #70757a;
+		background-color: transparent;
+	}
+	button {
+		font-size: 10px;
+    font-weight: 500;
+		cursor: pointer;
+		background-color: transparent;
+		border: none;
+		border-radius: 50%;
+
+	}
+	[class$=--selected] {
+		background-color: #d2e3fc;
+	}
+	[class$=--greyed]{
+		color: #70757a;
+	}
+	[class$=--today] {
+		background-color: $color-royal-blue;
+    color: #fff;
+	}
+	button:not([class$=--today]):hover{
+		background-color: #f1f3f4;
+	}
+}
+
+.calendar-month__header--mini {
+	h5 {
+		color: $primary-color-font;
+		line-height: 2.5;
+		font-weight: 500;
+	}
+	padding-left: 8px;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+

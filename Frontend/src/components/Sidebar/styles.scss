@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+
+.sidebar {
+	/* user requested narrower sidebar to match screenshot */
+	min-width: 280px;
+	width: 280px;
+	max-width: 280px;
+	flex-grow: 1;
+	position: relative;
+	border-right: 1px solid rgba(0,0,0,0.04);
+	background: $brand-blue-bg; /* use same brand blue background for structural unity */
+	box-shadow: none;
+	z-index: 100;
+	/* allow overlapping card shadow to be visible */
+	overflow: visible;
+	& > *:not([class^=dialog-inner]) {
+		margin: 10px 0;
+	}
+
+			font-family: 'Product Sans', 'Roboto', 'Noto Sans SC', Helvetica, Arial, sans-serif;
+			color: $primary-color-font;
+			font-size: 15px;
+			padding: 0 18px; /* align inner content with header padding */
+
+		.create-schedule-inner {
+			padding: 12px 8px;
+		}
+}

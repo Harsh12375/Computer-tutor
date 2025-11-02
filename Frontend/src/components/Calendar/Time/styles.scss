@@ -1,0 +1,12 @@
+@import '../../../styles/variables';
+
+.current-time-indicator {
+  position: absolute;
+  left: 60px;
+  right: 0;
+  height: 2px;
+  background: #ea4335;
+  box-shadow: 0 1px 4px rgba(234,67,53,0.12);
+  pointer-events: none;
+  z-index: 900;
+}

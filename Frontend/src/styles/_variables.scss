@@ -1,0 +1,51 @@
+$screen-breakpoint-xsm: 480px;
+$screen-breakpoint-sm: 640px;
+$screen-breakpoint-md: 768px;
+$screen-breakpoint-lg: 1024px;
+$screen-breakpoint-xl: 1280px;
+$screen-breakpoint-2xl: 1536px;
+
+$color-lighter-gray: #dadce0;
+$primary-color-font: #3c4043;
+$bg-color--hover: rgba(60,64,67,.08);
+$dialog-item--hover: rgb(234,234,234);
+
+$color-black: #000;
+$color-royal-blue: #1A73E8;
+$color-rolling-stone: #70757A;
+$color-grafito: #616161;
+
+/* Material-like palette and layout tokens */
+$app-bg: #f8f9fa; /* soft off-white page background */
+$sidebar-bg: #f1f3f4; /* sidebar off-white */
+$card-radius: 8px;
+$elevation-shadow: 0 1px 3px rgba(60,64,67,0.15);
+$muted-gray: rgba(60,64,67,0.7);
+$base-font-size: 14px;
+
+/* brand / harmony tokens */
+$brand-blue: $color-royal-blue;
+$brand-blue-bg: rgba(26,115,232,0.04);
+$pill-radius: 16px;
+$elevation-shadow-lg: 0 8px 20px rgba(60,64,67,0.16);
+
+
+$filtered-color-white: invert(100%) sepia(0%) saturate(7500%) hue-rotate(119deg) brightness(101%) contrast(103%);
+$filtered-color-light: invert(41%) sepia(9%) saturate(280%) hue-rotate(174deg) brightness(89%) contrast(89%);
+$filtered-color-dark: invert(10%) sepia(2%) saturate(2072%) hue-rotate(187deg) brightness(93%) contrast(92%);
+$filtered-color-black: invert(0%) sepia(95%) saturate(0%) hue-rotate(256deg) brightness(93%) contrast(101%);
+$filtered-color-raddichio: invert(17%) sepia(33%) saturate(6444%) hue-rotate(316deg) brightness(94%) contrast(101%);
+$filtered-color-grafito: invert(37%) sepia(13%) saturate(0%) hue-rotate(248deg) brightness(92%) contrast(79%);
+
+@mixin isometric-dim($size) {
+	width: $size;
+	height: $size;
+}
+
+@mixin child-attribute($child) {
+  $string: inspect(&);
+  $original: str-slice($string, 3, -4);
+  @at-root #{ selector-replace(&, &, "[#{$original}#{$child}]" ) } {
+    @content;
+  }
+}

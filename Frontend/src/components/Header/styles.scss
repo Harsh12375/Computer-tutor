@@ -1,0 +1,172 @@
+@import '../../styles/variables';
+
+.header-input {
+	color: $primary-color-font;
+	border: 1px solid $color-lighter-gray;
+	border-radius: $pill-radius; /* pill */
+	background-color: #fff;
+	width: max-content;
+	cursor: pointer;
+	padding: 8px 14px;
+	transition: all 0.18s ease;
+}
+
+.header-input:hover {
+	background-color: #f1f3f4;
+}
+
+.header-search {
+	border: 1px solid $color-lighter-gray;
+	padding: 8px 12px;
+	border-radius: 999px;
+	width: 260px;
+	background-color: #fff;
+	margin-right: 0.75rem;
+}
+
+.header{
+	display: flex;
+	height: 72px;
+	border-bottom: 1px solid rgba(0,0,0,0.04);
+	background: $brand-blue-bg; /* use brand blue background for harmony */
+	backdrop-filter: blur(0.5px);
+	position: relative;
+	z-index: 320; /* keep header on top of the calendar card */
+	min-width: min-content;
+	width: 100%;
+	align-items: center;
+	padding: 0 20px; /* align with global padding */
+
+	&__inner {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		div:not(.logo):not([class^=dialog-inner]):not([class^=calendar]):not([class^=numerical-day]){
+			position: relative;
+			gap: 0 1rem;
+			display: flex;
+			align-items: center;
+		}
+	}
+}
+
+/* Make header and sidebar visually unified: same background and matching horizontal padding */
+.header, .sidebar {
+	background: $brand-blue-bg;
+}
+
+	/* Today button: rounded and subtle border */
+	.header .header-input[role="button"], .header .header-input {
+		border: 1px solid #dadce0;
+		border-radius: 16px;
+	}
+
+	/* Switcher arrow animations */
+	.switcher-btn .switcher-icon {
+		transition: transform 160ms ease, filter 160ms ease;
+	}
+	.switcher-btn:hover .switcher-left {
+		transform: translateX(-3px);
+	}
+	.switcher-btn:hover .switcher-right {
+		transform: translateX(3px);
+	}
+
+	/* View selector pills */
+	.view-selector {
+		display: inline-flex;
+		gap: 6px;
+	}
+	.view-button {
+		border: none;
+		background: transparent;
+		padding: 6px 10px;
+		border-radius: $pill-radius;
+		font-weight: 500;
+		cursor: pointer;
+		color: $primary-color-font;
+	}
+	.view-button:hover {
+		background: rgba(26,115,232,0.06);
+	}
+	.view-button.active {
+		background-color: #e8f0fe;
+		color: #1a73e8;
+	}
+
+	/* Settings and profile icon styling */
+	.settings-icon-wrapper {
+		@include isometric-dim($size: 40px);
+		background-color: transparent;
+		border-radius: 50%;
+		box-shadow: $elevation-shadow;
+		transition: background 160ms ease, transform 160ms ease;
+	}
+	.settings-icon-wrapper:hover {
+		background: rgba(26,115,232,0.06);
+	}
+	.user-image-wrapper {
+		@include isometric-dim($size: 40px);
+		background-color: transparent;
+		border-radius: 50%;
+		box-shadow: $elevation-shadow;
+		transition: transform 160ms ease;
+	}
+	.user-image-wrapper:hover {
+		transform: translateY(-2px);
+	}
+
+.header-text {
+	font-family: 'Noto Sans SC', Helvetica, Arial, sans-serif;
+	width: max-content;
+	font-size: 1.1rem;
+	color: #5f6368;
+}
+
+.logo{
+	&__width{
+	@include isometric-dim($size: 40px);
+		.logo-img {
+			@include isometric-dim($size: 40px);
+		}
+	}
+	&__text {
+		font-family: 'Product-Sans', Arial, sans-serif;
+		color: #5f6368;
+		font-size: 20px;
+		font-weight: 500;
+	}
+}
+
+.settings-icon-wrapper {
+	@include isometric-dim($size: 40px);
+	background-color: transparent;
+	border-radius: 50%;
+	& > img {
+		@include isometric-dim($size: 30px);
+	}
+}
+
+/* subtle transitions for header controls */
+.header .header-input, .header .settings-icon-wrapper, .header-search {
+  transition: all 0.18s ease;
+}
+
+.user-image-wrapper {
+	@include isometric-dim($size: 40px);
+	background-color: transparent;
+	border-radius: 50%;
+	& > span {
+		line-height: 10px;
+	}
+	& img {
+		border-radius: 50%;
+		@include isometric-dim($size: 40px);
+	}
+	border: 1px solid $color-lighter-gray;
+}
+
+.sign-out-btn {
+	line-height: 23px;
+}
