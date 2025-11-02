@@ -1,12 +1,13 @@
 import React from 'react';
 import { uniqueID } from '../../util/reusable-funcs';
-import { UserAction } from '../../contexts/StoreContext/index.model';
+import { Calendar } from '../../contexts/StoreContext/types/calendar';
+import { Schedule } from '../../contexts/StoreContext/types/schedule';
 import { convertExternalEventsToCalendar, convertExternalEventToSchedule, getHolidayEventsByRegion } from '../../api/holiday';
 
 interface HolidayMenuProps {
   show: boolean;
   onClose: () => void;
-  onAddCalendar: (calendarObj: any, schedules: any[]) => void;
+  onAddCalendar: (calendarObj: Calendar, schedules: Schedule[]) => void;
 }
 
 export default function HolidayMenu({ show, onClose, onAddCalendar }: HolidayMenuProps) {
@@ -24,8 +25,8 @@ export default function HolidayMenu({ show, onClose, onAddCalendar }: HolidayMen
         [key: string]: unknown;
       }
       const schedules = (data.items || []).map((evt: HolidayEvent) => {
-        return convertExternalEventToSchedule({ ...evt, calendarId });
-      });
+        return convertExternalEventToSchedule({ ...evt, calendarId }) as Schedule;
+      }) as Schedule[];
       
       if (schedules.length) {
         onAddCalendar(calendarObj, schedules);

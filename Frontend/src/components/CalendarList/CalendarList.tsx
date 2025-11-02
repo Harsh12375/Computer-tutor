@@ -45,7 +45,7 @@ export default function CalendarList({
 
 	const [showHolidayMenu, setShowHolidayMenu] = useState(false);
 
-	const handleHolidayCalendarAdd = (calendarObj: any, schedules: any[]) => {
+    const handleHolidayCalendarAdd = (calendarObj: Calendar, schedules: Schedule[]) => {
 		dispatchCalendars({ type: UserAction.ADD, payload: { addedItem: calendarObj } });
 		if (schedules.length) {
 			dispatchSchedules({ type: UserAction.ADD_MULTIPLE, payload: { addedItems: schedules } });

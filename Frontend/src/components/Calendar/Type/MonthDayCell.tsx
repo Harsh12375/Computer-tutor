@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dayjs } from 'dayjs';
 import { useStore } from '../../../contexts/StoreContext';
-import { Schedule, Event } from '../../../contexts/StoreContext/types/schedule';
+import { Event } from '../../../contexts/StoreContext/types/schedule';
 import { useCalendarConfigUpdater } from '../../../contexts/CalendarConfigContext';
 import { useAppConfigUpdater } from '../../../contexts/AppConfigContext';
 import { convertDateUnitsToString } from '../../../util/calendar-arrangement';
