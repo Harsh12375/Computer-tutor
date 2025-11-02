@@ -13,10 +13,9 @@ import './styles.scss';
 import ChevronBottom from '../../assets/icons/chevron-bottom.png';
 import ChevronUp from '../../assets/icons/chevron-up.png';
 import PlusIcon from '../../assets/icons/plus.png';
-import { getHolidayEventsByRegion, convertExternalEventsToCalendar, convertExternalEventToSchedule } from '../../api/holiday';
-
 import { getColorOption } from '../../util/color-options';
 import { uniqueID } from '../../util/reusable-funcs';
+import HolidayMenu from './HolidayMenu';
 
 interface CalendarListProps {
 	type: CalendarType
@@ -46,26 +45,10 @@ export default function CalendarList({
 
 	const [showHolidayMenu, setShowHolidayMenu] = useState(false);
 
-	const addHolidayCalendar = async (regionCode: string) => {
-		setShowHolidayMenu(false);
-		setShowAddLblBtn(false);
-		try {
-			const data = await getHolidayEventsByRegion(regionCode);
-			if (!data) return;
-			const calendarId = uniqueID();
-			const calendarObj = convertExternalEventsToCalendar({ holidayCalendar: data, calendarId, regionCode });
-			// add calendar
-			dispatchCalendars({ type: UserAction.ADD, payload: { addedItem: calendarObj } });
-			// convert events to schedules and add them
-			const schedules = (data.items || []).map((evt: any) => {
-				const schedule = convertExternalEventToSchedule({ ...evt, calendarId });
-				return schedule;
-			});
-			if (schedules.length) {
-				dispatchSchedules({ type: UserAction.ADD_MULTIPLE, payload: { addedItems: schedules } });
-			}
-		} catch (error) {
-			console.error('Error adding holiday calendar', error);
+	const handleHolidayCalendarAdd = (calendarObj: any, schedules: any[]) => {
+		dispatchCalendars({ type: UserAction.ADD, payload: { addedItem: calendarObj } });
+		if (schedules.length) {
+			dispatchSchedules({ type: UserAction.ADD_MULTIPLE, payload: { addedItems: schedules } });
 		}
 	}
 
@@ -145,15 +128,11 @@ export default function CalendarList({
 								>
 									⋯
 								</button>
-								{showHolidayMenu && (
-									<div className='holiday-quick-add-menu'>
-										<button onClick={() => addHolidayCalendar('en.india')}>India</button>
-										<button onClick={() => addHolidayCalendar('en.usa')}>USA</button>
-										<button onClick={() => addHolidayCalendar('en.uk')}>UK</button>
-										<button onClick={() => addHolidayCalendar('en.australia')}>Australia</button>
-										<button onClick={() => addHolidayCalendar('en.ae')}>UAE</button>
-									</div>
-								)}
+								<HolidayMenu 
+									show={showHolidayMenu}
+									onClose={() => setShowHolidayMenu(false)}
+									onAddCalendar={handleHolidayCalendarAdd}
+								/>
 							</>
 							: null
 						}
