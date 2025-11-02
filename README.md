@@ -5,8 +5,11 @@ This repository contains a calendar application built with TypeScript and React.
 
 This README documents how to set up and run the project locally and highlights the main parts of the stack.
 
-![alt text](image.png)
-![alt text](image-1.png)
+<img width="1738" height="915" alt="image" src="https://github.com/user-attachments/assets/a069e700-492c-4eda-b8c7-b231a2d4f979" />
+<img width="1805" height="897" alt="image" src="https://github.com/user-attachments/assets/8af7e38b-921a-4449-be81-77169a3ec7a6" />
+<img width="1752" height="896" alt="image" src="https://github.com/user-attachments/assets/9dfc8b80-2c09-4f29-b3fe-96708157bd21" />
+
+
 
 ## Features
 - Create and manage calendars
@@ -46,7 +49,7 @@ npm install
 -- Frontend: create `Frontend/.env` (and `Frontend/.env.development` if you want) and set the holiday API url used by the Frontend. Example:
 
 ```dotenv
-REACT_APP_HOLIDAY_API_URL=http://localhost:5000/api
+REACT_APP_HOLIDAY_API_URL=http://localhost:4000/api
 ```
 
 -- Backend: create `backend/.env` with Google API settings. Minimal example:
@@ -60,7 +63,7 @@ PORT=4000
 
 Note: enable the Google Calendar API in Google Cloud Console and create an API key for the server.
 
-3) Start the backend (runs on the port provided in `backend/.env` or default 5000):
+3) Start the backend (runs on the port provided in `backend/.env` or default 4000):
 
 ```powershell
 cd "C:\path\to\google-calendar-clone-main\backend"
@@ -107,7 +110,7 @@ Create a file named `.env` inside the `backend` folder. At minimum set:
 API_KEY=YOUR_GOOGLE_API_KEY
 CALENDAR_ID=holiday@group.v.calendar.google.com
 CALENDAR_REGION=en.usa
-PORT=5000
+PORT=4000
 ```
 
 Notes:
@@ -120,7 +123,7 @@ Notes:
 Create a `.env` file in the `Frontend` folder with the holiday API URL that points to your running backend (the Frontend uses this to fetch holidays):
 
 ```dotenv
-REACT_APP_HOLIDAY_API_URL=http://localhost:5000/api
+REACT_APP_HOLIDAY_API_URL=http://localhost:4000/api
 ```
 
 5) Firebase setup (optional but recommended for user sign-in & sync)
@@ -184,8 +187,8 @@ npm run build
 ```
 
 9) Common troubleshooting
-	- Make sure the backend is running on the port you set in `backend/.env` (default 5000).
-	- Confirm `REACT_APP_HOLIDAY_API_URL` points at `http://localhost:5000/api`.
+	- Make sure the backend is running on the port you set in `backend/.env` (default 4000).
+	- Confirm `REACT_APP_HOLIDAY_API_URL` points at `http://localhost:4000/api`.
 	- Check that your `API_KEY` is valid and the Calendar API is enabled for that project.
 	- Check the backend logs for the exact Google API error.
 	- Confirm backend has `cors()` enabled (backend code already includes it). Make sure the request originates from the expected host during development.
